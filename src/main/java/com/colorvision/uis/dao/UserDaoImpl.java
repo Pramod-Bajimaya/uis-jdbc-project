@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.colorvision.uis.model.User;
 import com.colorvision.uis.util.DbUtil;
-
 public class UserDaoImpl implements UserDao {
 
 	public static final String SAVE_SQL = "insert into user_tbl(user_name, password, mobile_no, is_active, salary)values(?,?,?,?,?)";
@@ -17,9 +16,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int saveUserInfo(User user) {
-
 		int saved = 0;
-
 		try (PreparedStatement ps = DbUtil.getcoConnection().prepareStatement(SAVE_SQL);) {
 
 			ps.setString(1, user.getUsername());
@@ -38,7 +35,6 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int updateUserInfo(User user) {
 		int updated = 0;
-
 		try (PreparedStatement ps = DbUtil.getcoConnection().prepareStatement(UPDATE_SQL);) {
 
 			ps.setString(1, user.getUsername());
@@ -59,7 +55,6 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int deleteUserInfo(int id) {
 		int deleted = 0;
-
 		try (PreparedStatement ps = DbUtil.getcoConnection().prepareStatement(DELETE_SQL);) {
 
 			ps.setInt(1, id);
@@ -75,20 +70,18 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> getAllUserInfo() {
 		List<User> userList = new ArrayList<>();
-
 		try (PreparedStatement ps = DbUtil.getcoConnection().prepareStatement(LIST_SQL);) {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				User user = new User();
-			
-			user.setUsername(rs.getString("user_name"));
-			user.setPassword(rs.getString("password"));
-			user.setMobileNo(rs.getLong("mobile_no"));
-			user.setSalary(rs.getDouble("salary"));
-			user.setId(rs.getInt("id"));
-			user.setActive(rs.getBoolean("is_active"));
-			userList.add(user);
+			    user.setUsername(rs.getString("user_name"));
+			    user.setPassword(rs.getString("password"));
+			    user.setMobileNo(rs.getLong("mobile_no"));
+			    user.setSalary(rs.getDouble("salary"));
+			    user.setId(rs.getInt("id"));
+			    user.setActive(rs.getBoolean("is_active"));
+			    userList.add(user);
 			
 			}
 
@@ -104,18 +97,16 @@ public class UserDaoImpl implements UserDao {
 		try (PreparedStatement ps = DbUtil.getcoConnection().prepareStatement(GET_BY_ID_SQL);) {
 
 			ps.setInt(1, id);
+			
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				
-			
-			user.setUsername(rs.getString("user_name"));
-			user.setPassword(rs.getString("password"));
-			user.setMobileNo(rs.getLong("mobile_no"));
-			user.setSalary(rs.getDouble("salary"));
-			user.setId(rs.getInt("id"));
-			user.setActive(rs.getBoolean("is_active"));
-			
-			
+			     user.setUsername(rs.getString("user_name"));
+			     user.setPassword(rs.getString("password"));
+			     user.setMobileNo(rs.getLong("mobile_no"));
+			     user.setSalary(rs.getDouble("salary"));
+			     user.setId(rs.getInt("id"));
+			     user.setActive(rs.getBoolean("is_active"));
+					
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -123,7 +114,6 @@ public class UserDaoImpl implements UserDao {
 		}
 		
 		return user;
-	
 		
 	}
 

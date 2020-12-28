@@ -1,9 +1,6 @@
 package com.colorvision.uis.service;
-
 import java.util.List;
-
 import com.colorvision.uis.model.User;
-
 public interface UserService {
 
 	int saveUserInfo(User user);

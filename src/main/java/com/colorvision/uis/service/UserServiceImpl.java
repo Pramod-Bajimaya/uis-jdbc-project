@@ -21,19 +21,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int deleteUserInfo(int id) {
-		
 		return userDao.deleteUserInfo(id);
 	}
 
 	@Override
 	public List<User> getAllUserInfo() {
-		
 		return userDao.getAllUserInfo();
 	}
 
 	@Override
 	public User getUserById(int id) {
-		
 		return userDao.getUserById(id);
 	}
 
